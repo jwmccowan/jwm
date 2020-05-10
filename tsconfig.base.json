@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "composite": true,
+    "declarationMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "jsx": "react",
+    "keyofStringsOnly": false,
+    "moduleResolution": "node",
+    "noErrorTruncation": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "paths": {},
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+
+    "allowJs": true,
+
+    "module": "esnext",
+    "declaration": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es6",
+    "sourceMap": true,
+    "lib": ["es5", "es6", "es7", "es2017", "dom"]
+  },
+  "include": [],
+  "exclude": ["dist", "**/dist/", "node_modules", "**/node_modules"]
+}

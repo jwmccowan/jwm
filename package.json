@@ -1,0 +1,52 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*/*"
+    ],
+    "nohoist": [
+      "packages/apps/**/webpack-dev-server"
+    ]
+  },
+  "npmClient": "yarn",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build:all": "lerna run build --stream",
+    "storybook": "yarn lerna run storybook --stream",
+    "test": "yarn lerna exec \"yarn test\""
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-react-app": "^5.1.0",
+    "eslint-plugin-flowtype": "^4.5.3",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^4.0.6",
+    "jest-prop-type-error": "^1.1.0",
+    "lerna": "^3.20.2",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/setupTests.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.{js,jsx,ts,tsx}",
+      "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
+    ]
+  }
+}
