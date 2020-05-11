@@ -6,13 +6,12 @@
     "outDir": "./dist",
     "noEmit": false,
     "tsBuildInfoFile": "../../.build-cache/components.tsbuildinfo",
-    "esModuleInterop": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "test-utils": ["./src/utils/test-utils"]
     },
-    "skipLibCheck": true
+    "esModuleInterop": true
   },
-  "references": [],
   "include": ["src/**/*"],
-  "exclude": ["./dist", "./node_modules"]
+  "exclude": ["node_modules", "dist", "scripts"]
 }

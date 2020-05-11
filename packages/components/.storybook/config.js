@@ -1,14 +1,22 @@
-import { addParameters, configure } from '@storybook/react';
-import { themes } from '@storybook/theming';
+import { addDecorator, configure } from '@storybook/react';
+import { ThemeProvider } from 'styled-components';
+import * as React from 'react';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { defaultTheme } from '../src/themes';
 
-addParameters({
-  options: {
-    theme: themes.dark,
-  },
-});
+const req = require.context('../src', true, /\.stories\.tsx$/);
 
-const comps = require.context('@jwm/components/src', true, /.stories.tsx$/);
+function loadStories() {
+  req.keys().forEach(req);
+}
 
-configure(() => {
-  comps.keys().forEach(filename => comps(filename));
-}, module);
+const history = createBrowserHistory();
+
+addDecorator(story => (
+  <ThemeProvider theme={defaultTheme}>
+    <Router history={history}>{story()}</Router>
+  </ThemeProvider>
+));
+
+configure(req, module);

@@ -1,45 +1,43 @@
 {
   "name": "@jwm/components",
   "version": "0.1.0",
-  "description": "React compnent library",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": "https://www.github.com/jwmccowan/blog",
-  "author": "John McCowan",
+  "description": "Components",
+  "author": "John McCowan <jmccowan@digitalstack.io>",
+  "homepage": "",
   "license": "MIT",
-  "scripts": {
-    "build": "yarn tsc",
-    "storybook": "start-storybook",
-    "test": "yarn jest",
-    "test:watch": "yarn jest --watch"
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
   },
+  "files": [
+    "lib"
+  ],
   "private": true,
+  "scripts": {
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "yarn run webpack --mode=production",
+    "build:clean": "yarn run rimraf dist && yarn run webpack --mode=production",
+    "build:watch": "yarn run rimraf dist && yarn run webpack --watch --mode=development"
+  },
   "peerDependencies": {
+    "@types/styled-components": "^5.1.0",
+    "@types/styled-system": "^5.1.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.5.0",
-    "@testing-library/react": "^10.0.4",
-    "@types/jest": "^25.2.1",
-    "@types/react-dom": "^16.9.4",
-    "@types/styled-components": "^5.1.0",
-    "jest": "^26.0.1",
-    "ts-jest": "^25.5.0",
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-docs": "^5.2.8",
-    "@storybook/addon-info": "^5.2.8",
-    "@storybook/addon-links": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/preset-create-react-app": "^1.5.0",
-    "@storybook/react": "^5.2.8",
-    "@storybook/theming": "^5.2.8",
-    "cross-env": "6.0.3",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "ts-loader": "^7.0.2"
-  },
-  "dependencies": {
-    "styled-components": "^5.1.0"
+    "@babel/core": "^7.9.6",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0",
+    "jest-styled-components": "^7.0.2"
   }
 }
