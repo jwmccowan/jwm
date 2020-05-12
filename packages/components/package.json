@@ -7,11 +7,10 @@
   "license": "MIT",
   "main": "dist/index.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "src": "src"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "private": true,
   "scripts": {
@@ -37,7 +36,11 @@
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
+    "@types/tinycolor2": "^1.4.2",
     "babel-loader": "^8.1.0",
     "jest-styled-components": "^7.0.2"
+  },
+  "dependencies": {
+    "tinycolor2": "^1.4.1"
   }
 }

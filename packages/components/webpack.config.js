@@ -5,7 +5,7 @@ const alter = require('./.storybook/webpack.config');
 
 const baseConfig = {
   entry: './src/index.ts',
-  externals: ['react', 'react-dom', 'i18next', 'moment-timezone'],
+  externals: ['react', 'react-dom', 'i18next', 'moment-timezone', 'styled-components'],
   module: {
     rules: [
       {
