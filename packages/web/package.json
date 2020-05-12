@@ -20,7 +20,7 @@
   "scripts": {
     "build": "yarn run webpack --mode=production",
     "dev": "webpack-dev-server --open",
-    "test": "echo \"Tests not yet implemented\" && exit 0"
+    "test": "echo \"Tests not yet implemented - please do that!\" && exit 0"
   },
   "bugs": {
     "url": "https://github.com/jwmccowan/blog/issues"
