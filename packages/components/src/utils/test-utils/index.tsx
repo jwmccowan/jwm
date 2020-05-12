@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { defaultTheme } from '../../themes';
+import { dark } from '../../themes';
 
 const AllTheProviders: React.ComponentClass<{}, any> | React.FunctionComponent<{}> = ({ children }) => {
-  return <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={dark}>{children}</ThemeProvider>;
 };
 
 //TODO: any

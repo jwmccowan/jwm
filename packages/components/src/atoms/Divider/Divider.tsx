@@ -14,14 +14,14 @@ type ContainerDividerProps = Omit<DividerProps, 'position'> & {
 const ContainerDivider = styled.div<ContainerDividerProps>`
   ${(props) => {
     const position = props.position;
-    return `border-${position}: 1px solid ${props.theme.colors.grayscale[4]}`;
+    return `border-${position}: 1px solid ${props.theme.colors.grayscale.medium}`;
   }}
 `;
 
 const FlatDivider = styled.div`
   display: block;
   height: 1px;
-  background-color: ${(props) => props.theme.colors.grayscale[4]};
+  background-color: ${(props) => props.theme.colors.grayscale.medium};
 `;
 
 export const Divider: React.FC<DividerProps> = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) =>

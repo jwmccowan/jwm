@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { getButtonColor, ButtonState } from '../../utils/theme-utils';
 
 export type ContextColor = 'primary' | 'secondary' | 'danger' | 'alert' | 'success' | 'info';
 
@@ -14,35 +15,43 @@ export const StyledButton = styled.button<ButtonProps>`
   align-items: center;
   white-space: nowrap;
   font-size: 1rem;
-  border: 0.0625em solid ${(props) => props.theme.colors[props.contextColor || 'secondary'][0]};
+  border: 1px solid
+    ${({ theme, contextColor }) => getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.DEFAULT)};
   height: 2.5em;
   justify-content: center;
   text-decoration: none;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   appearance: none;
   padding: 0 1em;
-  border-radius: 0.125em;
+  border-radius: 0.125rem;
   box-sizing: border-box;
   pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   transition: background-color 100ms ease-out, color 100ms ease-out, border-color 100ms ease-out, box-shadow 400ms ease-out,
     color 400ms ease-out;
   background: none;
-  color: ${(props) => props.theme.colors[props.contextColor || 'secondary'][0]};
-  padding: 1em 2em;
-  margin: 0.5em;
+  color: ${({ theme, contextColor }) => getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.DEFAULT)};
+  padding: ${(props) => props.theme.spacing.LG} ${(props) => props.theme.spacing.XL};
+  margin: ${(props) => props.theme.spacing.MD};
+  text-transform: uppercase;
+
   &:hover,
   &:focus {
-    border-color: ${(props) => props.theme.colors[props.contextColor || 'secondary'][1]};
-    box-shadow: inset 0 0 0 2em ${(props) => props.theme.colors[props.contextColor || 'secondary'][1]};
-    color: ${(props) => props.theme.colors.backgroundColor[1]};
+    border-color: ${({ theme, contextColor }) =>
+      getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.FOCUSED)};
+    box-shadow: inset 0 0 0 2em
+      ${({ theme, contextColor }) => getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.FOCUSED)};
+    color: ${(props) => props.theme.colors.backgroundColor};
   }
   &:active {
-    border-color: ${(props) => props.theme.colors[props.contextColor || 'secondary'][3]};
-    box-shadow: inset 0 0 0 2em ${(props) => props.theme.colors[props.contextColor || 'secondary'][3]};
+    border-color: ${({ theme, contextColor }) =>
+      getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.PRESSED)};
+    box-shadow: inset 0 0 0 2em
+      ${({ theme, contextColor }) => getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.PRESSED)};
   }
   &:disabled {
-    border-color: ${(props) => props.theme.colors[props.contextColor || 'secondary'][3]};
-    color: ${(props) => props.theme.colors[props.contextColor || 'secondary'][3]};
+    border-color: ${({ theme, contextColor }) =>
+      getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.DISABLED)};
+    color: ${({ theme, contextColor }) => getButtonColor(theme.colors.contextColors[contextColor || 'secondary'], ButtonState.DISABLED)};
   }
 `;
 
