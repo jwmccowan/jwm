@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { dark } from '../../themes';
+import { dark } from '@jwm/themes';
 
 const AllTheProviders: React.ComponentClass<{}, any> | React.FunctionComponent<{}> = ({ children }) => {
   return <ThemeProvider theme={dark}>{children}</ThemeProvider>;
