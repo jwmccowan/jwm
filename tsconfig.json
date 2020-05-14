@@ -17,7 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "@jwm/components": ["libs/components/src/index.ts"],
-      "@jwm/themes": ["libs/themes/src/index.ts"]
+      "@jwm/themes": ["libs/themes/src/index.ts"],
+      "@jwm/auth": ["libs/auth/src/index.ts"],
+      "@jwm/users": ["libs/users/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
