@@ -19,7 +19,8 @@
     "build-storybook": "build-storybook",
     "build": "yarn run webpack --mode=production",
     "build:clean": "yarn run rimraf dist && yarn run webpack --mode=production",
-    "build:watch": "yarn run rimraf dist && yarn run webpack --watch --mode=development"
+    "build:watch": "yarn run rimraf dist && yarn run webpack --watch --mode=development",
+    "dev": "yarn build:watch"
   },
   "peerDependencies": {
     "@types/styled-components": "^5.1.0",
