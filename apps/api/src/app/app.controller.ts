@@ -1,27 +1,26 @@
-import { Controller, Get, UseGuards, UseFilters } from '@nestjs/common';
+import { Controller, Get, UseGuards, UseFilters, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
-import { AuthenticatedGuard, Unauthorized } from '@jwm/auth';
+import { LocalAuthGuard, JwtAuthGuard } from '@jwm/auth';
+import { AuthService } from '@jwm/auth';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly authService: AuthService) {}
 
   @Get()
   getData() {
     return this.appService.getData();
   }
 
-  @Get('secured-page')
-  @UseGuards(AuthenticatedGuard)
-  @UseFilters(Unauthorized)
-  async securedPage() {
-    console.log('@AppController /secured-page');
-    return 'secured-page';
+  @UseGuards(LocalAuthGuard)
+  @Post('auth/login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
   }
 
-  @Get('login-page')
-  async loginPage() {
-    console.log('@AppController /login-page');
-    return 'login page';
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
   }
 }

@@ -1,40 +1,22 @@
-import { Module, DynamicModule } from '@nestjs/common';
-import { PassportModule, IAuthModuleOptions } from '@nestjs/passport';
+import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LocalStrategy, SessionSerializer } from './providers';
-import { AuthController } from './auth.controller';
-
-export interface AuthModuleOptions extends IAuthModuleOptions {
-  successRedirect: string;
-  failureRedirect: string;
-}
+import { UsersModule } from '@jwm/users';
+import { PassportModule } from '@nestjs/passport';
+import { LocalStrategy } from './local.strategy';
+import { jwtConstants } from './constant';
+import { JwtModule } from '@nestjs/jwt';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
-    PassportModule.register({
-      session: true,
-      successRedirect: '/secured-page',
-      failureRedirect: '/login-page',
+    UsersModule,
+    PassportModule,
+    JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '60s' },
     }),
   ],
-  controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, SessionSerializer],
-  exports: [PassportModule, AuthService, LocalStrategy, SessionSerializer],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
+  exports: [AuthService],
 })
-export class AuthModule {
-  static register({ successRedirect, failureRedirect }: AuthModuleOptions): DynamicModule {
-    return {
-      module: AuthModule,
-      imports: [
-        PassportModule.register({
-          session: true,
-          successRedirect,
-          failureRedirect,
-        }),
-      ],
-      controllers: [AuthController],
-      providers: [AuthService, LocalStrategy, SessionSerializer],
-      exports: [PassportModule, AuthService, LocalStrategy, SessionSerializer],
-    };
-  }
-}
+export class AuthModule {}
