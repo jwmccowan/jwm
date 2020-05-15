@@ -16,6 +16,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: { sub: string; username: string }) {
     // TODO: here we can add businesss logic, like checking against revoked users
     // or doing a db lookup to provide a more enriched user to the response
-    return { userId: payload.sub, username: payload.username };
+    return { id: payload.sub, username: payload.username };
   }
 }
