@@ -39,6 +39,9 @@
     },
     "users": {
       "tags": []
+    },
+    "graphql": {
+      "tags": []
     }
   }
 }
