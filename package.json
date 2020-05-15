@@ -93,7 +93,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn nx affected:test"
+      "pre-push": "yarn nx affected:test"
     }
   }
 }
