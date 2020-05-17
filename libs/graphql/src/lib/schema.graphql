@@ -1,11 +1,35 @@
 type User {
-  id: String!
-  username: String!
-  role: String
+  id: ID!
+  email: String!
+  role: String!
   passwordHash: String!
-  name: String
+  name: String!
 }
 
 type Query {
-  me: User
+  me: User!
+  user(id: ID!): User!
+  users: [User!]!
+}
+
+type Mutation {
+  signup(signUpInput: SignUpInput): AuthPayload!
+  login(loginInput: LoginInput): AuthPayload!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  id: ID!
+  email: String!
+}
+
+input SignUpInput {
+  email: String!
+  name: String!
+  password: String!
+  role: String!
 }

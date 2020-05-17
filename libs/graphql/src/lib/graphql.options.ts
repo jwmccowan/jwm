@@ -1,7 +1,7 @@
 import { GqlModuleOptions, GqlOptionsFactory } from '@nestjs/graphql';
 import { Injectable } from '@nestjs/common';
 import { join } from 'path';
-import { CustomGraphQLContext } from '@jwm/auth';
+import { CustomGraphQLContext } from './decorators';
 
 @Injectable()
 export class GraphqlOptions implements GqlOptionsFactory {

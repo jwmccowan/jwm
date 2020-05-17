@@ -10,9 +10,9 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super();
   }
 
-  async validate(username: string, passwordHash: string): Promise<Omit<User, 'passwordHash'>> {
+  async validate(email: string, passwordHash: string): Promise<Omit<User, 'passwordHash'>> {
     console.log(`@LocalStrategy validate`);
-    const user = await this.service.validateUser(username, passwordHash);
+    const user = await this.service.validateUser(email, passwordHash);
     console.log(`@LocalStrategy validate ${JSON.stringify(user)}`);
     if (!user) {
       throw new UnauthorizedException('Unknown user');

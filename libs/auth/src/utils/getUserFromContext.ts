@@ -1,11 +1,7 @@
 import { ExecutionContext } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { GqlContextType, GqlExecutionContext } from '@nestjs/graphql';
-
-export interface CustomGraphQLContext {
-  req: Request;
-  res: Response;
-}
+import { CustomGraphQLContext } from '@jwm/graphql';
 
 export function getUserFromContext(context: ExecutionContext) {
   if (context.getType() === 'ws') {
